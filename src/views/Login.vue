@@ -25,7 +25,9 @@
 </div>
 </template>
 <script>
+import mixins from '../mixin/mixin'
 export default {
+    mixins:[mixins],
     name:'Login',
     data(){
         return{
@@ -37,18 +39,16 @@ export default {
     },
     methods:{
         async login(){
-          let url = this.$baseUrl + 'login';
-          let response = await fetch(url,{
-              method:'post',
-              headers:{'Content-Type':'application/json'},
-              body:JSON.stringify(this.creditial)
-          });
-          let data = await response.json();
-          const {status,success,token} = data;
-           if(success){
-               localStorage.setItem('token',token);
-               this.$router.push({name:'Home'})
-           }
+            let url = this.$baseUrl + 'login';
+            let data = await this.sendData(url,this.creditial);
+            const {success,token} = data;
+            if(success){
+                localStorage.setItem('token',token);
+                this.$emit('changeLogin');
+                this.$router.push({name:'Home'})
+            }else{
+             this.$router.push({name:'Login'})
+            }
         },
       emailFieldChange(){
         //console.log(this.creditial.email);

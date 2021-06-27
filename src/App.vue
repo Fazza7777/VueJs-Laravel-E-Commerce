@@ -1,7 +1,7 @@
 <template>
 <div>
   <Nav :logged='logged' />
-  <router-view :logged='logged' />
+  <router-view :logged='logged' @changeLogin="changeLoginStatus" />
 </div>
 </template>
 <script>
@@ -15,7 +15,9 @@ export default {
     }
   },
   methods:{
-   
+   changeLoginStatus(){
+     this.logged = !this.logged;
+   }
   }
 }
 </script>
