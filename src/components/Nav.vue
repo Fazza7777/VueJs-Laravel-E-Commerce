@@ -1,6 +1,6 @@
 <template>
 <div class="bg-primary">
-    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary py-2">
+    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary ">
         <div class="container">
             <router-link class="navbar-brand text-white" :to="{name:'Home'}">Shopping</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
