@@ -1,8 +1,8 @@
 <template>
 <div class="bg-primary">
-    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary py-2">
         <div class="container">
-            <a class="navbar-brand" href="#">Default Color</a>
+            <router-link class="navbar-brand text-white" :to="{name:'Home'}">Shopping</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,8 +42,9 @@
                             <span class="nav-link-inner--text d-lg-none">Settings</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <router-link class="dropdown-item" :to="{name:'Register'}">Register</router-link>
+                            <router-link class="dropdown-item" :to="{name:'Login'}">Login</router-link>
+                            <router-link class="dropdown-item" :to="{name:'Register'}">Logout</router-link>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
