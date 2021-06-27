@@ -42,11 +42,11 @@
                             <span class="nav-link-inner--text d-lg-none">Settings</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                            <router-link class="dropdown-item" :to="{name:'Register'}">Register</router-link>
-                            <router-link class="dropdown-item" :to="{name:'Login'}">Login</router-link>
-                            <router-link class="dropdown-item" :to="{name:'Register'}">Logout</router-link>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <router-link v-if="!logged" class="dropdown-item" :to="{name:'Register'}">Register</router-link>
+                            <router-link v-if="!logged" class="dropdown-item" :to="{name:'Login'}">Login</router-link>
+                            <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Pyae Phyoe Naing</router-link>
+                            <div v-if="logged" class="dropdown-divider"></div>
+                            <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Logout</router-link>
                         </div>
                     </li>
                 </ul>
@@ -59,6 +59,7 @@
 </template>
 <script>
 export default {
-    name:'Nav'
+    name:'Nav',
+    props:{logged:Boolean}
 }
 </script>
