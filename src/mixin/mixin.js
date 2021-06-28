@@ -1,11 +1,15 @@
 export default {
     methods: {
-        async fetchData(route){
-            let response = await fetch(`http://127.0.0.1:8000/api/${route}`);
-            if(response.status == 200){
-                return  await response.json(); // convert to json
-            }
-      
+        async fetchData(url){
+            let response = await fetch(url);
+             let res =  await response.json(); // convert to json
+             if(res.status == 200){
+                return res.data;
+             }else{
+                 return [];
+             }
+            
+        
         },
         async sendData(url,data){
             let response = await fetch(url,{

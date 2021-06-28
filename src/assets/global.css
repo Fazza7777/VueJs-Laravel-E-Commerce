@@ -3,3 +3,18 @@
 *{
     font-family: 'Open Sans', sans-serif;
 }
+.cart{
+    background-color: red;
+    display: inline-block;
+    font-size: 12px !important;
+    width:20px;
+    height:20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    position: relative;
+    top: -13px;
+}
+.uil-nav{
+    font-size: 20px;
+}

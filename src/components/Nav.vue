@@ -1,8 +1,8 @@
 <template>
 <div class="bg-primary">
-    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary ">
+    <nav class="navbar navbar-expand-lg navbar-dark container bg-primary py-2">
         <div class="container">
-            <router-link class="navbar-brand text-white" :to="{name:'Home'}">Shopping</router-link>
+            <router-link class="navbar-brand text-white font-weight-bold" :to="{name:'Home'}">P-N Shopping</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,20 +26,26 @@
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="#">
-                            <i class="ni ni-favourite-28"></i>
-                            <span class="nav-link-inner--text d-lg-none">Discover</span>
+                           <i class="uil uil-shopping-cart uil-nav"></i>
+                            <span class="cart">5</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="#">
-                            <i class="ni ni-notification-70"></i>
-                            <span class="nav-link-inner--text d-lg-none">Profile</span>
+                            <i class="uil uil-bell uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">Profile</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="#">
+                            <i class="uil uil-bookmark uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">Save</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span class="nav-link-inner--text d-lg-none">Settings</span>
+                           <i class="uil uil-setting uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">Settings</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <router-link v-if="!logged" class="dropdown-item" :to="{name:'Register'}">Register</router-link>
