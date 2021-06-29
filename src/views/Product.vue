@@ -4,20 +4,25 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="d-inline text-primary">Product List</h4>
+            <h4 class="d-inline text-primary"><router-link :to="{name:'Home'}" class="mr-2 uil-nav"><i class="uil uil-angle-left-b"></i></router-link> List</h4>
             <span class="float-right text-success"><i class="uil uil-shopping-cart-alt mr-3 uil-nav"></i> Shop Now</span>
           </div>
         </div>
       </div>
       <div class="col-md-3" v-for="(p,ind) in product.data" :key="ind">
           <div class="card shadow">
-            <div class="card-header">
-              {{p.name}}
+            <div class="card-header py-2">
+              {{p.name}} 
+              <span class="btn btn-sm btn-primary float-right"><i class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
             </div>
             <div class="card-body">
                <p class="text-center">
                  <img :src="assetUrl+'product/'+p.images.split(',')[0]" width="100" height="100" alt="">
                </p>
+               <div class="d-flex justify-content-between">
+                  <span class="btn btn-sm btn-danger"> <i class="uil uil-eye"></i></span>
+                  <span class="badge badge-success mb-1">{{p.price}} MMK</span>                
+                </div>
             </div>
           </div>
       </div>

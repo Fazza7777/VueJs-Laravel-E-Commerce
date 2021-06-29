@@ -8,7 +8,7 @@
          <div class="card shadow  w-100 mb-3 " style="max-height:300px" >
            <div class="card-header">
               <h4 class="d-inline"><i class="uil uil-shopping-cart-alt mr-3 text-success uil-nav"></i> Shop Now</h4>
-              <button class="btn btn-sm btn-primary float-right ">All Product</button>
+              <!-- <router-link :to="`/product/all/0`" class="btn btn-sm btn-primary float-right ">All Product</router-link> -->
            </div>
              <div class="card-body text-center">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
