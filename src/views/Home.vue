@@ -23,7 +23,7 @@
          <div class="card" v-for="(tag,index) in tags" :key="index" >
            <div class="card-header" v-if="tag.product.length >0">
               <h3  class="d-inline">{{tag.name}}</h3>
-              <router-link :to="`/product/productByTag/${tag.id}`" class="d-in float-right btn btn-sm btn-info"> View All</router-link>
+              <router-link :to="`/product/productByAllTag/${tag.id}`" class="d-in float-right btn btn-sm btn-info"> View All</router-link>
            </div>
            <div class="card-body" v-if="tag.product.length >0">
                 <div class="row">

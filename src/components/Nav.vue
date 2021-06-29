@@ -24,6 +24,12 @@
                 </div>
                 
                 <ul class="navbar-nav ml-lg-auto">
+                     <li class="nav-item">
+                        <router-link class="nav-link nav-link-icon" :to="{name:'Home'}">
+                            <i class="uil uil-home uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">Home</span>
+                        </router-link>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="#">
                            <i class="uil uil-shopping-cart uil-nav"></i>
