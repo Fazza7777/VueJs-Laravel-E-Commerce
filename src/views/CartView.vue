@@ -110,10 +110,32 @@
                     this.$router.push('/');
                 }
             },
-            checkOut(){
+           async checkOut(){
                 let token = localStorage.getItem('token');
                 if(token){
-                    alert('ရှင်းတော့လေ');
+                    let data = localStorage.getItem('product');
+                    let productsData = JSON.parse(data);
+                    if(productsData.length > 0){
+                        let arr = [];
+                       productsData.forEach(product=>{
+                           arr.push({id:product.id,count:product.count});
+                       });
+                       let sendOrderProducts = {orders:arr}; // server catch orders:{ }
+                       let response = await fetch(this.$baseUrl+'order',{
+                                method:'post',
+                                headers:{
+                                    'content-type':'application/json',
+                                    'Authorization':`Bearer ${token}`
+                                    },
+                                body : JSON.stringify(sendOrderProducts)
+                           });
+                           let data = await response.json();
+                           if(data.success){
+                               localStorage.removeItem('product');
+                               this.$emit('changeCartCount');
+                               this.$router.push({name:'Home'});
+                            } 
+                    }
                 }else{
                  this.$router.push({name:'Login'});
                 } 
