@@ -1,6 +1,6 @@
 <template>
 <div>
-  <Nav :logged='logged' :cartCount='cartCount' />
+  <Nav :logged='logged' :cartCount='cartCount' @changeLogin="changeLoginStatus" />
   <router-view :logged='logged' 
   @changeLogin="changeLoginStatus" 
   @changeCartCount="changeProductCount"
@@ -29,6 +29,10 @@ export default {
    }
   },
   beforeMount(){
+    let token = localStorage.getItem('token');
+    if(token) {
+      this.logged = true;
+      }
     this.changeProductCount();
   }
 }

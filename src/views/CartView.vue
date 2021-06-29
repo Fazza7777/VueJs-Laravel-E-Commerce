@@ -31,7 +31,7 @@
                                     <td>{{cart.price}} MMK</td>
                                     <td>{{cart.count}}</td>
                                     <td>
-                                        <button class="btn btn-success btn-sm"
+                                        <button class="btn btn-primary btn-sm"
                                             @click="changeProductCount(cart.id,cart.count+1)">
                                             <i class="uil uil-plus"></i>
                                         </button>
@@ -42,17 +42,23 @@
                                     </td>
                                     <td>{{cart.price * cart.count}} MMK</td>
                                     <td>
-                                        <button @click="removeProduct(ind)" class="btn btn-danger btn-sm"><i
-                                                class="uil uil-trash-alt"></i></button>
+                                        <button @click="removeProduct(ind)" class="btn btn-danger btn-sm">
+                                            <i class="uil uil-trash-alt" ></i></button>
                                     </td>
                                 </tr>
                             </tbody>
-                            <tbody>                            
+                            <tbody>
                                 <tr>
                                     <td class="text-right" colspan="6">Grand Total</td>
                                     <td colspan="1">{{grandTotal}} MMK</td>
-                                    <td></td>
-                                </tr>      
+                                    <td>
+                                        <button @click="checkOut()" class="btn btn-success btn-sm pt-0">
+                                            <span class="mt-1">
+                                                <i class="uil uil-usd-circle" style="font-size:18px"></i> Check Out
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -68,7 +74,7 @@
             return {
                 assetUrl: this.$assetUrl,
                 addCart: [],
-                grandTotal:0,
+                grandTotal: 0,
             }
         },
         methods: {
@@ -77,8 +83,8 @@
                 let data = localStorage.getItem('product');
                 this.addCart = data ? JSON.parse(data) : [];
                 this.grandTotal = 0;
-                this.addCart.forEach(cart=>{
-                   this.grandTotal += cart.price * cart.count;
+                this.addCart.forEach(cart => {
+                    this.grandTotal += cart.price * cart.count;
                 });
 
             },
@@ -103,7 +109,15 @@
                 if (this.addCart.length < 1) {
                     this.$router.push('/');
                 }
-            }
+            },
+            checkOut(){
+                let token = localStorage.getItem('token');
+                if(token){
+                    alert('ရှင်းတော့လေ');
+                }else{
+                 this.$router.push({name:'Login'});
+                } 
+             }   
         },
         beforeMount() {
             this.loadAllProduct();

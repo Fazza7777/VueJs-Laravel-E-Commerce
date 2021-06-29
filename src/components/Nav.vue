@@ -55,7 +55,7 @@
                             <router-link v-if="!logged" class="dropdown-item" :to="{name:'Login'}">Login</router-link>
                             <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Pyae Phyoe Naing</router-link>
                             <div v-if="logged" class="dropdown-divider"></div>
-                            <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Logout</router-link>
+                            <li style="cursor:pointer;" v-if="logged" class="dropdown-item" @click="logout()">Logout</li>
                         </div>
                     </li>
                 </ul>
@@ -72,6 +72,13 @@ export default {
     props:{logged:Boolean,cartCount:Number},
     beforeMount(){
         console.log(this.cartCount);
+     },
+     methods:{
+        logout(){
+            localStorage.removeItem('token');
+            this.$emit('changeLogin');
+            this.$router.push({name:'Login'});
+         }   
      }
 }
 </script>
