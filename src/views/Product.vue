@@ -60,6 +60,7 @@ export default {
             return;
           }
         }
+        product.count = 1;
         productArr.push(product);
         localStorage.setItem('product',JSON.stringify(productArr));
         this.$emit('changeCartCount');

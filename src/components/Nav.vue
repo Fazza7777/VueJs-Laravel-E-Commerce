@@ -32,11 +32,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="#">
+                        <router-link class="nav-link nav-link-icon" to="/cart">
                            <i class="uil uil-shopping-cart uil-nav"></i>
                             <span class="cart">{{('0' + cartCount).slice(-2)}}</span>
                             <!-- <span class="cart">{{cartCount}}</span> -->
-                        </a>
+                        </router-link>
                     </li>
      
                      <li class="nav-item">
