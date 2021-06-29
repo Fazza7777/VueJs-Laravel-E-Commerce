@@ -13,7 +13,7 @@
           <div class="card shadow">
             <div class="card-header py-2">
               {{p.name}} 
-              <span class="btn btn-sm btn-primary float-right"><i class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
+              <span @click="addCart(p)" class="btn btn-sm btn-primary float-right"><i class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
             </div>
             <div class="card-body">
                <p class="text-center">
@@ -34,6 +34,7 @@
   <loading v-else/>
 </template>
 <script>
+
 import Loading from '../components/Loading.vue';
 import mixins from '../mixin/mixin';
 export default {
@@ -50,17 +51,30 @@ export default {
         }
     },
     methods:{
+      addCart(product){
+        let productData  = localStorage.getItem('product');
+        let productArr = productData ? JSON.parse(productData) : [];
+        for(let p of productArr){
+          if(p.id == product.id){
+           alert('Item already exist');
+            return;
+          }
+        }
+        productArr.push(product);
+        localStorage.setItem('product',JSON.stringify(productArr));
+        this.$emit('changeCartCount');
+      },
       async loadProduct(){
         let url = `${this.$baseUrl}${this.name}/${this.id}`;
         this.product = await this.fetchData(url);
-        console.log(this.product);
         this.isLoading = true;
       }
-    },
-    beforeMount(){
-       this.id = this.$route.params.id;
-       this.name = this.$route.params.name;
-       this.loadProduct();
-    }
+      },
+      beforeMount(){
+
+        this.id = this.$route.params.id;
+        this.name = this.$route.params.name;
+        this.loadProduct();
+      }
 }
 </script>

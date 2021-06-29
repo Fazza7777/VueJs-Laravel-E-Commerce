@@ -34,7 +34,8 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="#">
                            <i class="uil uil-shopping-cart uil-nav"></i>
-                            <span class="cart">5</span>
+                            <span class="cart">{{('0' + cartCount).slice(-2)}}</span>
+                            <!-- <span class="cart">{{cartCount}}</span> -->
                         </a>
                     </li>
      
@@ -68,6 +69,9 @@
 <script>
 export default {
     name:'Nav',
-    props:{logged:Boolean}
+    props:{logged:Boolean,cartCount:Number},
+    beforeMount(){
+        console.log(this.cartCount);
+     }
 }
 </script>

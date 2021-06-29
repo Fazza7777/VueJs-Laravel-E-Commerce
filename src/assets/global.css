@@ -6,17 +6,17 @@
 .cart{
     background-color: red;
     display: inline-block;
-    font-size: 12px !important;
-    width:20px;
-    height:20px;
+    font-size: 10px !important;
+    width:25px;
+    height:25px;
     text-align: center;
-    line-height: 20px;
+    line-height: 25px;
     border-radius: 50%;
     position: relative;
     top: -13px;
 }
 .uil-nav{
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .loading{
