@@ -7,7 +7,8 @@
       <div class="col-md-8">
          <div class="card shadow  w-100 mb-3 " style="max-height:300px" >
            <div class="card-header">
-             <i class="uil uil-shopping-cart-alt mr-3 text-success"></i> Shop Now
+              <h4 class="d-inline"><i class="uil uil-shopping-cart-alt mr-3 text-success uil-nav"></i> Shop Now</h4>
+              <button class="btn btn-sm btn-primary float-right ">All Product</button>
            </div>
              <div class="card-body text-center">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -21,7 +22,8 @@
          </div>
          <div class="card" v-for="(tag,index) in tags" :key="index" >
            <div class="card-header" v-if="tag.product.length >0">
-              <h3  >{{tag.name}}</h3>
+              <h3  class="d-inline">{{tag.name}}</h3>
+              <router-link :to="`/product/productByTag/${tag.id}`" class="d-in float-right btn btn-sm btn-info"> View All</router-link>
            </div>
            <div class="card-body" v-if="tag.product.length >0">
                 <div class="row">
