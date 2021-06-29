@@ -1,5 +1,5 @@
 <template>
-<div class="container my-4">
+<div v-if="isLoading" class="container my-4">
   <div class="row">
       <div class="col-md-4">
         <sidebar :cats="cats" :subCats='subCats'/>
@@ -47,13 +47,15 @@
       </div>
   </div>
 </div>
+<loading v-else />
 </template>
 
 <script>
+import Loading from '../components/Loading.vue';
 import Sidebar from '../components/Sidebar.vue';
 import mixins from '../mixin/mixin';
 export default {
- components: { Sidebar },
+ components: { Sidebar, Loading },
   mixins:[mixins],
   name: 'Home',
   data(){
@@ -61,7 +63,8 @@ export default {
       cats:[],
       subCats:[],
       tags:[],
-      assetUrl : this.$assetUrl
+      assetUrl : this.$assetUrl,
+      isLoading : false
     }
   },
   async beforeMount(){
@@ -71,7 +74,7 @@ export default {
     for(let tag of this.tags){
        tag.product = await this.fetchData(`${this.$baseUrl}productByTag/${tag.id}`);
     }
-    
+    this.isLoading = true
   }
 }
 </script>

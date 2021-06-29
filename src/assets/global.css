@@ -18,3 +18,11 @@
 .uil-nav{
     font-size: 20px;
 }
+
+.loading{
+    height: 100vh;
+    background-color: rgb(238, 233, 233);
+    text-align: center;
+    line-height: 90vh;
+    
+}
