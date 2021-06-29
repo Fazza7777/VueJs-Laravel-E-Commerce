@@ -31,18 +31,28 @@
                                     <td>{{cart.price}} MMK</td>
                                     <td>{{cart.count}}</td>
                                     <td>
-                                        <button class="btn btn-success btn-sm" @click="changeProductCount(cart.id,cart.count+1)" >
+                                        <button class="btn btn-success btn-sm"
+                                            @click="changeProductCount(cart.id,cart.count+1)">
                                             <i class="uil uil-plus"></i>
                                         </button>
-                                        <button class="btn btn-warning btn-sm" @click="changeProductCount(cart.id,cart.count > 1 ? cart.count-1 : 1)">
+                                        <button class="btn btn-warning btn-sm"
+                                            @click="changeProductCount(cart.id,cart.count > 1 ? cart.count-1 : 1)">
                                             <i class="uil uil-minus"></i>
                                         </button>
                                     </td>
                                     <td>{{cart.price * cart.count}} MMK</td>
                                     <td>
-                                        <button @click="removeProduct(ind)" class="btn btn-danger btn-sm"><i class="uil uil-trash-alt"></i></button>
+                                        <button @click="removeProduct(ind)" class="btn btn-danger btn-sm"><i
+                                                class="uil uil-trash-alt"></i></button>
                                     </td>
                                 </tr>
+                            </tbody>
+                            <tbody>                            
+                                <tr>
+                                    <td class="text-right" colspan="6">Grand Total</td>
+                                    <td colspan="1">{{grandTotal}} MMK</td>
+                                    <td></td>
+                                </tr>      
                             </tbody>
                         </table>
                     </div>
@@ -57,39 +67,49 @@
         data() {
             return {
                 assetUrl: this.$assetUrl,
-                addCart: []
+                addCart: [],
+                grandTotal:0,
             }
         },
         methods: {
-          
+
             loadAllProduct() {
                 let data = localStorage.getItem('product');
                 this.addCart = data ? JSON.parse(data) : [];
-                console.log(this.addCart);
+                this.grandTotal = 0;
+                this.addCart.forEach(cart=>{
+                   this.grandTotal += cart.price * cart.count;
+                });
+
             },
-              changeProductCount(id, count) {
+            changeProductCount(id, count) {
                 let data = localStorage.getItem('product');
                 let products = JSON.parse(data);
-                products.forEach(product =>{ 
-                    if(product.id == id){
+                products.forEach(product => {
+                    if (product.id == id) {
                         product.count = count;
                     }
                 });
-                localStorage.setItem('product',JSON.stringify(products));
+                localStorage.setItem('product', JSON.stringify(products));
                 this.loadAllProduct();
             },
-            removeProduct(index){
+            removeProduct(index) {
                 let data = localStorage.getItem('product');
                 let products = JSON.parse(data);
-                products.splice(index,1);
-                localStorage.setItem('product',JSON.stringify(products));
+                products.splice(index, 1);
+                localStorage.setItem('product', JSON.stringify(products));
                 this.loadAllProduct();
                 this.$emit('changeCartCount');
-
+                if (this.addCart.length < 1) {
+                    this.$router.push('/');
+                }
             }
         },
         beforeMount() {
             this.loadAllProduct();
+            if (this.addCart.length < 1) {
+                this.$router.push('/');
+            }
         }
     }
 </script>
