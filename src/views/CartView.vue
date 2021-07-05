@@ -112,6 +112,7 @@
             },
            async checkOut(){
                 let token = localStorage.getItem('token');
+ 
                 if(token){
                     let data = localStorage.getItem('product');
                     let productsData = JSON.parse(data);

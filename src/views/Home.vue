@@ -70,6 +70,7 @@ export default {
     }
   },
   async beforeMount(){
+     console.log(this.$root.user);
     this.cats = await this.fetchData(`${this.$baseUrl}categories`);
     this.subCats = await this.fetchData(`${this.$baseUrl}subcats`);
     this.tags = await this.fetchData(`${this.$baseUrl}tags`);

@@ -15,7 +15,8 @@ export default {
   data(){
     return{
       logged:false,
-      cartCount:0
+      cartCount:0,
+      user:[]
     }
   },
   methods:{

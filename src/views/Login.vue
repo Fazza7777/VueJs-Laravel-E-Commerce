@@ -41,8 +41,9 @@ export default {
         async login(){
             let url = this.$baseUrl + 'login';
             let data = await this.sendData(url,this.creditial);
-            const {success,token} = data;
+            const {success,token,user} = data;
             if(success){
+                this.$root.user = user;
                 localStorage.setItem('token',token);
                 this.$emit('changeLogin');
                 this.$router.push({name:'Home'})
@@ -50,12 +51,9 @@ export default {
              this.$router.push({name:'Login'})
             }
         },
-      emailFieldChange(){
-        //console.log(this.creditial.email);
-      },
-       passwordFieldChange(){
-        //console.log(this.creditial.password);
-      }
+    },
+    beforeMount(){
+        console.log(this.$root.user);
     }
 }
 </script>

@@ -58,7 +58,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <router-link v-if="!logged" class="dropdown-item" :to="{name:'Register'}">Register</router-link>
                             <router-link v-if="!logged" class="dropdown-item" :to="{name:'Login'}">Login</router-link>
-                            <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Pyae Phyoe Naing</router-link>
+                            <router-link v-if="logged" class="dropdown-item" :to="{name:'Register'}">Welcome {{$root.user.name}}</router-link>
                             <div v-if="logged" class="dropdown-divider"></div>
                             <li style="cursor:pointer;" v-if="logged" class="dropdown-item" @click="logout()">Logout</li>
                         </div>
