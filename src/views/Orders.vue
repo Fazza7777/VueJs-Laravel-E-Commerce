@@ -88,7 +88,7 @@
                 let response = await res.json();
                 if (response.success) {
                     this.orders = response.data;
-                    console.log(response.data);
+                    //console.log(response.data);
                 } else {
                     this.orders = [];
                 }

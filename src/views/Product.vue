@@ -14,14 +14,14 @@
           <div class="card shadow">
             <div class="card-header py-2">
               {{p.name}} 
-              <span @click="addCart(p)" class="btn btn-sm btn-primary float-right"><i class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
+              <span @click="addToCart(p)" class="btn btn-sm btn-primary float-right"><i class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
             </div>
             <div class="card-body">
                <p class="text-center">
                  <img :src="assetUrl+'product/'+p.images.split(',')[0]" width="100" height="100" alt="">
                </p>
                <div class="d-flex justify-content-between">
-                  <span class="btn btn-sm btn-danger"> <i class="uil uil-eye"></i></span>
+                  <router-link :to="`/product/${p.id}`" class="btn btn-sm btn-danger"> <i class="uil uil-eye"></i></router-link>
                   <span class="badge badge-success mb-1">{{p.price}} MMK</span>                
                 </div>
             </div>
@@ -52,19 +52,8 @@ export default {
         }
     },
     methods:{
-      addCart(product){
-        let productData  = localStorage.getItem('product');
-        let productArr = productData ? JSON.parse(productData) : [];
-        for(let p of productArr){
-          if(p.id == product.id){
-           alert('Item already exist');
-            return;
-          }
-        }
-        product.count = 1;
-        productArr.push(product);
-        localStorage.setItem('product',JSON.stringify(productArr));
-        this.$emit('changeCartCount');
+      addToCart(product){
+        this.addCart(product);
       },
       async loadProduct(){
         let url = `${this.$baseUrl}${this.name}/${this.id}`;

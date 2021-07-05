@@ -54,7 +54,12 @@ export default {
         },
     },
     beforeMount(){
-        console.log(this.$root.user);
+        let token = localStorage.getItem('token');
+        if (token) {
+            this.$router.push({
+                name: 'Home'
+            });
+        }
     }
 }
 </script>

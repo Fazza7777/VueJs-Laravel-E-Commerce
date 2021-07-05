@@ -19,6 +19,21 @@ export default {
             });
             return await response.json(); // convert to json
      
-        }
+        },
+        addCart(product){
+            let productData  = localStorage.getItem('product');
+            let productArr = productData ? JSON.parse(productData) : [];
+            for(let p of productArr){
+              if(p.id == product.id){
+               alert('Item already exist');
+                return;
+              }
+            }
+            product.count = 1;
+            productArr.push(product);
+            localStorage.setItem('product',JSON.stringify(productArr));
+            this.$emit('changeCartCount');
+        },
     }
+   
 }

@@ -82,10 +82,18 @@ export default {
                 this.$router.push({name:'Login'})
             }else{
               this.errors = data.errors
-              console.log(this.errors);
+              // console.log(this.errors);
             }
         },
       
+    },
+    beforeMount(){
+          let token = localStorage.getItem('token');
+        if (token) {
+            this.$router.push({
+                name: 'Home'
+            });
+        }
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="container my-5" v-if="isLoading">
-        <div class="row py-5"></div>
+        <div class="row py-3"></div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -18,7 +18,7 @@
                 <div class="card shadow">
                     <div class="card-header py-2">
                         {{p.name}}
-                        <span @click="addCart(p)" class="btn btn-sm btn-primary float-right"><i
+                        <span @click="addToCart(p)" class="btn btn-sm btn-primary float-right"><i
                                 class="uil uil-shopping-cart-alt" style="font-size:16px;"></i></span>
                     </div>
                     <div class="card-body">
@@ -26,19 +26,21 @@
                             <img :src="assetUrl+'product/'+p.images.split(',')[0]" width="100" height="100" alt="">
                         </p>
                         <div class="d-flex justify-content-between">
-                            <span class="btn btn-sm btn-info"> <i class="uil uil-eye"></i> More</span>
+                            <router-link :to="`/product/${p.id}`" class="btn btn-sm btn-info"> 
+                                 <i class="uil uil-eye"></i> More
+                            </router-link>
                             <span class="badge badge-danger mb-1">{{p.price}} MMK</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 mt-3 d-flex justify-content-center">
-                <button :disabled="paginateLoader" @click="paginate"  class="btn  text-center d-block"
-                 style="width:90px;height:85px;background:#4A5FD8;">
+                <button :disabled="paginateLoader" @click="paginate" class="btn  text-center d-block"
+                    style="width:90px;height:85px;background:#4A5FD8;">
                     <i class="uil uil-arrow-to-bottom text-white" style="font-size:45px;"></i>
                 </button>
             </div>
-          
+
         </div>
     </div>
     <loading v-else />
@@ -57,32 +59,34 @@
                 product: [],
                 isLoading: false,
                 assetUrl: this.$assetUrl,
-                page:1,
-                paginateLoader:false
+                page: 1,
+                paginateLoader: false
             }
         },
         methods: {
             async getAllProduct() {
                 let products = await this.fetchData(`${this.$baseUrl}products`);
-                if(products.next_page_url == null){
+                if (products.next_page_url == null) {
                     this.page = 1;
                     this.paginateLoader = true;
                 }
                 this.product = products.data
                 this.isLoading = true;
-                console.log(this.product);
+               // console.log(this.product);
             },
-           async paginate(){
-            
-              this.page++;
-            let products = await this.fetchData(`${this.$baseUrl}products?page=${this.page}`);
-            if(products.next_page_url == null){
-                  this.page = 1;
-                  this.paginateLoader = true;
-              }
-             this.product = [...this.product,...products.data];
-             console.log(products);
-            }   
+            addToCart(product){
+                this.addCart(product);
+            },
+            async paginate() {
+                this.page++;
+                let products = await this.fetchData(`${this.$baseUrl}products?page=${this.page}`);
+                if (products.next_page_url == null) {
+                    this.page = 1;
+                    this.paginateLoader = true;
+                }
+                this.product = [...this.product, ...products.data];
+                // console.log(products);
+            }
         },
         beforeMount() {
             this.getAllProduct();

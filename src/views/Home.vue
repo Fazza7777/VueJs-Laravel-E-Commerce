@@ -36,7 +36,7 @@
                                 <img :src="assetUrl+'product/'+p.images.split(',')[0]" width="100" height="100" alt="">
                               </p>
                               <div class="d-flex justify-content-between">
-                                <span class="btn btn-sm btn-primary"> <i class="uil uil-eye"></i></span>
+                                <router-link :to="`/product/${p.id}`" class="btn btn-sm btn-primary"> <i class="uil uil-eye"></i></router-link>
                                 <span class="badge badge-danger mb-1">{{p.price}} MMK</span>
                                  
                               </div>
@@ -71,7 +71,7 @@ export default {
     }
   },
   async beforeMount(){
-     console.log(this.$root.user);
+     //console.log(this.$root.user);
     this.cats = await this.fetchData(`${this.$baseUrl}categories`);
     this.subCats = await this.fetchData(`${this.$baseUrl}subcats`);
     this.tags = await this.fetchData(`${this.$baseUrl}tags`);

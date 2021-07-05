@@ -6,6 +6,7 @@ import Product from '../views/Product.vue';
 import CartView from '../views/CartView.vue';
 import Orders from '../views/Orders.vue';
 import AllProduct from '../views/AllProduct.vue';
+import ViewProduct from '../views/ViewProduct.vue';
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/allproduct',
     name: 'AllProduct',
     component: AllProduct
+  },
+  {
+    path: '/product/:id',
+    name: 'ViewProduct',
+    component: ViewProduct
   }
 ]
 
