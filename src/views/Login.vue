@@ -1,8 +1,9 @@
 <template>
 <div class="container my-5">
+  <div class="row py-3"></div>
    <div class="row justify-content-center">
        <div class="col-lg-6 col-12">
-           <div class="card shadow">
+           <div class="card shadow mt-5">
                 <div class="card-header bg-primary ">
                     <h3 class="text-white">Login</h3>
                 </div>

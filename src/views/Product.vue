@@ -1,5 +1,6 @@
 <template>
   <div class="container my-5" v-if="isLoading">
+      <div class="row py-5"></div>
     <div class="row">
       <div class="col-12">
         <div class="card">

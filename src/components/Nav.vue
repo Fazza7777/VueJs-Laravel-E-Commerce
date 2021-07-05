@@ -1,5 +1,5 @@
 <template>
-<div class="bg-primary">
+<div class="bg-primary fixed-top mb-5">
     <nav class="navbar navbar-expand-lg navbar-dark container bg-primary py-2">
         <div class="container">
             <router-link class="navbar-brand text-white font-weight-bold" :to="{name:'Home'}">P-N Shopping</router-link>
@@ -28,6 +28,12 @@
                         <router-link class="nav-link nav-link-icon" :to="{name:'Home'}">
                             <i class="uil uil-home uil-nav"></i>
                             <span class="ml-2 nav-link-inner--text d-lg-none">Home</span>
+                        </router-link>
+                    </li>
+                     <li class="nav-item">
+                        <router-link class="nav-link nav-link-icon" :to="{name:'AllProduct'}">
+                            <i class="uil uil-parking-square uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">All Product</span>
                         </router-link>
                     </li>
                      <li class="nav-item">

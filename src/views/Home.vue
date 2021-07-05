@@ -1,19 +1,20 @@
 <template>
 <div v-if="isLoading" class="container my-4">
+  <div class="row py-5"></div>
   <div class="row">
       <div class="col-md-4">
         <sidebar :cats="cats" :subCats='subCats'/>
       </div>
       <div class="col-md-8">
-         <div class="card shadow  w-100 mb-3 " style="max-height:300px" >
+         <div class="card shadow  w-100 mb-3 " style="max-height:420px" >
            <div class="card-header">
               <h4 class="d-inline"><i class="uil uil-shopping-cart-alt mr-3 text-success uil-nav"></i> Shop Now</h4>
-              <!-- <router-link :to="`/product/all/0`" class="btn btn-sm btn-primary float-right ">All Product</router-link> -->
+              <router-link :to="{name:'AllProduct'}" class="btn btn-sm btn-primary float-right ">All Product</router-link>
            </div>
              <div class="card-body text-center">
                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                <div v-for="(c,index) in cats" :key="c.id" class="carousel-item" :class="{active : index==0}">
+                  <div v-for="(c,index) in cats" :key="c.id" class="carousel-item" :class="{active : index==0 }">
                     <img :src="assetUrl+c.image" class="d-block" width="200" height="200" style="margin:0 auto;">
                   </div>
                 </div>

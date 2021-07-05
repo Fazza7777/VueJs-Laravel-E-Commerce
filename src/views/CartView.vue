@@ -1,5 +1,6 @@
 <template>
     <div class="container my-5">
+        <div class="row pt-5"></div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -25,7 +26,7 @@
                                     <td>{{ind+1}}</td>
                                     <td>{{cart.name}}</td>
                                     <td>
-                                        <img :src="assetUrl+'product/'+cart.images.split(',')[0]" width="30" height="30"
+                                        <img :src="assetUrl+'product/'+cart.images.split(',')[0]" width="80" height="80"
                                             alt="">
                                     </td>
                                     <td>{{cart.price}} MMK</td>
