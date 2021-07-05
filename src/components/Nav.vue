@@ -24,19 +24,19 @@
                 </div>
                 
                 <ul class="navbar-nav ml-lg-auto">
-                    <li class="nav-item">
+                    <li class="nav-item mr-2">
                         <router-link class="nav-link nav-link-icon" :to="{name:'Home'}">
                             <i class="uil uil-home uil-nav"></i>
                             <span class="ml-2 nav-link-inner--text d-lg-none">Home</span>
                         </router-link>
                     </li>
-                     <li class="nav-item">
+                     <!-- <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" :to="{name:'AllProduct'}">
                             <i class="uil uil-parking-square uil-nav"></i>
                             <span class="ml-2 nav-link-inner--text d-lg-none">All Product</span>
                         </router-link>
-                    </li>
-                     <li class="nav-item">
+                    </li> -->
+                     <li class="nav-item" v-show="$root.logged">
                         <router-link class="nav-link nav-link-icon" :to="{name:'Orders'}">
                             <i class="uil uil-user-check uil-nav"></i>
                             <span class="ml-2 nav-link-inner--text d-lg-none">My Orders</span>
