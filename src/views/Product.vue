@@ -58,6 +58,7 @@ export default {
       async loadProduct(){
         let url = `${this.$baseUrl}${this.name}/${this.id}`;
         this.product = await this.fetchData(url);
+        console.log(this.product)
         this.isLoading = true;
       }
       },

@@ -48,8 +48,6 @@
         mixins: [mixins],
         name: 'Sidebar',
         props: ['cats', 'subCats'],
-        beforeMount(){
-            console.log(this.$root.user.name);
-        }
+      
     }
 </script>

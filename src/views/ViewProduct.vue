@@ -103,6 +103,9 @@
               let res = await response.json();  
               if(res.status == 200 ){
                 this.product = res.data;
+                 if(this.product.images.search(',') !== -1){
+                  this.product.images = this.product.images.split(',')[0]
+              }
               }                         
          },
           async unsave(){
@@ -120,6 +123,9 @@
               let res = await response.json();
               if(res.status == 200){
                  this.product = res.data;
+                  if(this.product.images.search(',') !== -1){
+                  this.product.images = this.product.images.split(',')[0]
+              }
               }             
          },
           addToCart(product){
@@ -141,9 +147,10 @@
            }
         },
         beforeMount() {
-            console.log(this.$root.user.length)
             this.id = this.$route.params.id;
-            this.getProduct();
+            if(this.id){
+                this.getProduct();
+            }
         }
     }
 </script>
