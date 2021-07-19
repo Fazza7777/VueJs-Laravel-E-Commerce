@@ -47,7 +47,15 @@
                                </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                              <div class="col-12">
+                                <div class="form-group">
+                                        <label for="">Address</label>
+                                        <textarea :class="{'is-invalid':errors.address}" v-model="creditial.address" class="form-control"></textarea>
+                                        <small v-if="errors.address" class="text text-danger"><strong>{{errors.address[0]}}</strong></small>
+                                </div>
+                            </div>
+                        </div>
                         <button class="btn btn-primary mt-3">Register</button>
                     </form>
                 </div>
@@ -68,6 +76,7 @@ export default {
               phone:'',
               email:'@gmail.com',
               password:'password',
+              address:'',
               password_confrim:'password'
           },
           errors:{}

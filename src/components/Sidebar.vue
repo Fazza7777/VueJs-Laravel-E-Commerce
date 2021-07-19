@@ -31,15 +31,17 @@
     </ol>
      <ol class="list-group list-group-numbered"  v-if="$root.user.name">
          <router-link :to="{name:'SaveProduct'}">
-               <li class="list-group-item active" >
+               <li class="list-group-item active " >
                     <div class="fw-bold d-flex justify-content-between"><span>Save Product</span> <i class="uil uil-bookmark nav-uil"></i></div>
                 </li>
          </router-link>
        
         <hr class="my-0 bg-white">
-      <li class="list-group-item active">
-            <div class="fw-bold d-flex justify-content-between"><span>Profile</span> <i class="uil uil-user nav-uil"></i></div>
-        </li>
+       <router-link :to="{name:'Profile'}">
+             <li class="list-group-item active">
+                 <div class="fw-bold d-flex justify-content-between"><span>Profile</span> <i class="uil uil-user nav-uil"></i></div>
+             </li>
+       </router-link>
     </ol>
 </template>
 <script>

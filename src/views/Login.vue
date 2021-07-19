@@ -40,12 +40,18 @@ export default {
     },
     methods:{
         async login(){
+            
+            let product = localStorage.getItem('product');
+            if(product){
+                 localStorage.removeItem('product');
+                this.$root.cartCount = 0;
+            }
+           
             let url = this.$baseUrl + 'login';
             let data = await this.sendData(url,this.creditial);
             const {success,token,user} = data;
             if(success){
                 this.$root.user = user;
-                console.log(user);
                 localStorage.setItem('user',JSON.stringify(user));
                 localStorage.setItem('token',token);
                 this.$emit('changeLogin');

@@ -5,6 +5,7 @@ import Register from '../views/Register.vue';
 import Product from '../views/Product.vue';
 import CartView from '../views/CartView.vue';
 import Orders from '../views/Orders.vue';
+import Profile from '../views/Profile.vue';
 import AllProduct from '../views/AllProduct.vue';
 import SaveProduct from '../views/SaveProduct.vue';
 import ViewProduct from '../views/ViewProduct.vue';
@@ -39,6 +40,11 @@ const routes = [
     path: '/orders',
     name: 'Orders',
     component: Orders
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/allproduct',

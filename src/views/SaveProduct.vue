@@ -73,7 +73,7 @@
                 
                 this.product = response.data
                 this.isLoading = true;
-                console.log(this.product);
+                
             },
             addToCart(product){
                 this.addCart(product);

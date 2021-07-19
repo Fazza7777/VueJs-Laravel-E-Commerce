@@ -48,7 +48,7 @@
                             <span class="ml-2 nav-link-inner--text d-lg-none">Save</span>
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" >
                         <router-link class="nav-link nav-link-icon" to="/cart">
                            <i class="uil uil-shopping-cart uil-nav"></i>
                             <span class="cart">{{('0' + cartCount).slice(-2)}}</span>
@@ -82,14 +82,14 @@
 export default {
     name:'Nav',
     props:{logged:Boolean,cartCount:Number},
-    beforeMount(){
-        console.log(this.cartCount);
-     },
+ 
      methods:{
         logout(){
             localStorage.removeItem('token');
+            localStorage.removeItem('product');
             localStorage.removeItem('user');
             this.$root.user = '';
+            this.$root.cartCount = 0;
             this.$emit('changeLogin');
             this.$router.push({name:'Login'});
          }   

@@ -144,9 +144,15 @@
              }   
         },
         beforeMount() {
+
             this.loadAllProduct();
             if (this.addCart.length < 1) {
                 this.$router.push('/');
+            }
+           let user = localStorage.getItem('user');
+            let token = localStorage.getItem('token');
+            if(user == null || token==null){
+                 this.$router.push('/login');
             }
         }
     }

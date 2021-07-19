@@ -96,6 +96,12 @@
         },
         beforeMount() {
             let token = localStorage.getItem('token');
+            let user = localStorage.getItem('user');
+            if(!user){
+                  this.$router.push({
+                    name: 'Login'
+                });
+            }
             if (token) {
                 this.getMyOrder(token);
             } else {
