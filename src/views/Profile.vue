@@ -66,21 +66,21 @@
                                             <div class="form-group">
                                                 <label for="current_password">Current Password</label>
                                                 <input :class="{'is-invalid':errors.current_password}" type="password"
-                                                    v-model="user.current_password" class="form-control">
+                                                    v-model="password.current_password" class="form-control">
                                                 <small v-if="errors.current_password"
                                                     class="text text-danger"><strong>{{errors.current_password[0]}}</strong></small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="new_password">New Password</label>
                                                 <input :class="{'is-invalid':errors.new_password}" type="password"
-                                                    v-model="user.new_password" class="form-control">
+                                                    v-model="password.new_password" class="form-control">
                                                 <small v-if="errors.new_password"
                                                     class="text text-danger"><strong>{{errors.new_password[0]}}</strong></small>
                                             </div>
                                             <div class="form-group">
                                                 <label for="confirm_password">Confirm Password</label>
                                                 <input :class="{'is-invalid':errors.confirm_password}" type="password"
-                                                    v-model="user.confirm_password" class="form-control">
+                                                    v-model="password.confirm_password" class="form-control">
                                                 <small v-if="errors.confirm_password"
                                                     class="text text-danger"><strong>{{errors.confirm_password[0]}}</strong></small>
                                             </div>
@@ -105,7 +105,12 @@
         data() {
             return {
                 user: '',
-                errors: ''
+                errors: '',
+                password:{
+                    current_password:'',
+                    new_password:'',
+                    confrim_password:'',
+                }
             }
         },
         methods: {
@@ -122,6 +127,7 @@
                 });
                 let data = await response.json();
                 if(data.status == 200){
+                    this.errors = '';
                     localStorage.removeItem('user');
                     localStorage.setItem('user',JSON.stringify(data.user));
                     this.user = data.user;
@@ -129,7 +135,30 @@
                 }else{
                     this.errors = data.errors
                 }
-            }
+            },
+           async changePassword() {
+                let token = localStorage.getItem('token');
+                let url = this.$baseUrl + 'change-password';
+                let response = await fetch(url, {
+                    method: 'post',
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(this.password)
+                });
+                let data = await response.json();
+                if(data.status == 200){
+                        this.errors = '';
+                        this.password = {current_password:'', new_password:'', confrim_password:''}
+                        localStorage.removeItem('user');
+                        localStorage.setItem('user',JSON.stringify(data.user));
+                        this.user = data.user;
+                        this.$root.user = data.user;
+                }else{   
+                    this.errors = data.errors
+                }
+            }  
         },
         beforeMount() {
             let user = localStorage.getItem('user');
