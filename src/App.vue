@@ -30,6 +30,13 @@ export default {
    }
   },
   beforeMount(){
+
+    let user = localStorage.getItem('user');
+    if(user){
+    this.user = JSON.parse(user);
+    }else{
+      this.user = '';
+    }
     let token = localStorage.getItem('token');
     if(token) {
       this.logged = true;

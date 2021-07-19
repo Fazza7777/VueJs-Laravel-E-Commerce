@@ -38,23 +38,26 @@
                            <p>
                               <b>Sizes : </b> <span class="badge badge-primary">{{product.sizes}}</span>
                           </p>
-                          <hr>
-                          <div v-if="!product.save">
-                              <form @submit.prevent="save()">
-                                  <input type="hidden" v-model="product_id">
-                                   <button class="btn btn-dark btn-sm">
-                                        <i class="uil uil-bookmark" style="font-size:16px;"></i> Save Product
-                                   </button>
-                               </form>  
-                          </div> 
+                         
+                          <div v-if="$root.user.name">
+                               <hr>
+                            <div v-if="!product.save">
+                                <form @submit.prevent="save()">
+                                    <input type="hidden" v-model="product_id">
+                                    <button class="btn btn-dark btn-sm">
+                                            <i class="uil uil-bookmark" style="font-size:16px;"></i> Save Product
+                                    </button>
+                                </form>  
+                            </div> 
                             <div v-else>
-                              <form @submit.prevent="unsave()">
-                                  <input type="hidden" v-model="product_id">
-                                   <button class="btn btn-warning btn-sm">
-                                        <i class="uil uil-bookmark" style="font-size:16px;"></i> UnSave 
-                                   </button>
-                               </form>  
-                          </div> 
+                                <form @submit.prevent="unsave()">
+                                    <input type="hidden" v-model="product_id">
+                                    <button class="btn btn-warning btn-sm">
+                                            <i class="uil uil-bookmark" style="font-size:16px;"></i> UnSave 
+                                    </button>
+                                </form>  
+                            </div> 
+                          </div>
                      </div>
                      <div class="card-footer">
                          <p>{{product.description}}</p>
@@ -125,11 +128,11 @@
            async getProduct(){
                let url = this.$baseUrl+'product/'+this.id;
                this.product = await this.fetchData(url);
-               console.log(this.product)
+               //console.log(this.product)
                this.product_id = this.product.id;
               if(this.product.images.search(',') !== -1){
                   this.product.images = this.product.images.split(',')[0]
-                  console.log(this.product.images);
+                //  console.log(this.product.images);
               }
                this.isLoading = true;
            },
@@ -138,6 +141,7 @@
            }
         },
         beforeMount() {
+            console.log(this.$root.user.length)
             this.id = this.$route.params.id;
             this.getProduct();
         }

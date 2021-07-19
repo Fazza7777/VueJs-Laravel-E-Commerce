@@ -38,8 +38,14 @@
                     </li> -->
                      <li class="nav-item" v-show="$root.logged">
                         <router-link class="nav-link nav-link-icon" :to="{name:'Orders'}">
-                            <i class="uil uil-user-check uil-nav"></i>
+                            <i class="uil uil-clipboard-notes uil-nav"></i>
                             <span class="ml-2 nav-link-inner--text d-lg-none">My Orders</span>
+                        </router-link>
+                    </li>
+                     <li class="nav-item" v-if="$root.user.name">
+                        <router-link class="nav-link nav-link-icon" :to="{name:'SaveProduct'}">
+                            <i class="uil uil-bookmark uil-nav"></i>
+                            <span class="ml-2 nav-link-inner--text d-lg-none">Save</span>
                         </router-link>
                     </li>
                     <li class="nav-item">
@@ -50,12 +56,7 @@
                         </router-link>
                     </li>
      
-                     <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="#">
-                            <i class="uil uil-bookmark uil-nav"></i>
-                            <span class="ml-2 nav-link-inner--text d-lg-none">Save</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <i class="uil uil-setting uil-nav"></i>
@@ -87,6 +88,8 @@ export default {
      methods:{
         logout(){
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            this.$root.user = '';
             this.$emit('changeLogin');
             this.$router.push({name:'Login'});
          }   

@@ -45,6 +45,8 @@ export default {
             const {success,token,user} = data;
             if(success){
                 this.$root.user = user;
+                console.log(user);
+                localStorage.setItem('user',JSON.stringify(user));
                 localStorage.setItem('token',token);
                 this.$emit('changeLogin');
                 this.$router.push({name:'Home'})

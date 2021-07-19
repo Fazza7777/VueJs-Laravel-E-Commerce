@@ -29,10 +29,13 @@
             <router-link to="/allproduct" class="btn btn-sm btn-primary" style="cursor:pointer">View All</router-link>
         </li>
     </ol>
-     <ol class="list-group list-group-numbered">
-        <li class="list-group-item active">
-            <div class="fw-bold d-flex justify-content-between"><span>Save Product</span> <i class="uil uil-bookmark nav-uil"></i></div>
-        </li>
+     <ol class="list-group list-group-numbered"  v-if="$root.user.name">
+         <router-link :to="{name:'SaveProduct'}">
+               <li class="list-group-item active" >
+                    <div class="fw-bold d-flex justify-content-between"><span>Save Product</span> <i class="uil uil-bookmark nav-uil"></i></div>
+                </li>
+         </router-link>
+       
         <hr class="my-0 bg-white">
       <li class="list-group-item active">
             <div class="fw-bold d-flex justify-content-between"><span>Profile</span> <i class="uil uil-user nav-uil"></i></div>
@@ -45,5 +48,8 @@
         mixins: [mixins],
         name: 'Sidebar',
         props: ['cats', 'subCats'],
+        beforeMount(){
+            console.log(this.$root.user.name);
+        }
     }
 </script>
